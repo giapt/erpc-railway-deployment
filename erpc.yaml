@@ -29,6 +29,8 @@ projects:
       - endpoint: drpc://{{ getenv "DRPC_API_KEY" }}
       {{ end }}
       - endpoint: envio://rpc.hypersync.xyz
+  - id: test
+    upstreams:
       - id: dioneprotocol
         type: evm
         endpoint: https://testnode.dioneprotocol.com/ext/bc/D/rpc
