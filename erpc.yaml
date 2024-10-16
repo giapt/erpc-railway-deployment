@@ -43,3 +43,15 @@ projects:
         failsafe:
           timeout:
             duration: 15s
+      - id: amoy
+        type: evm
+        endpoint: https://rpc-amoy.polygon.technology/
+        jsonRpc:
+          supportsBatch: true
+          batchMaxSize: 10
+          batchMaxWait: 100ms
+        evm:
+          chainId: 80002
+        failsafe:
+          timeout:
+            duration: 15s
