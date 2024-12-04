@@ -16,6 +16,8 @@ FROM ghcr.io/erpc/erpc:latest
 # Set environment variables (these can be empty or set by your CI/CD environment)
 ENV ALCHEMY_API_KEY="" \
     BLASTAPI_API_KEY="" \
+    INFURA_API_KEY="" \
+    THIRDWEB_API_KEY="" \
     DRPC_API_KEY=""
 
 # Copy processed config from builder

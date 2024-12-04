@@ -28,4 +28,36 @@ projects:
       {{ if getenv "DRPC_API_KEY" }}
       - endpoint: drpc://{{ getenv "DRPC_API_KEY" }}
       {{ end }}
+      {{ if getenv "INFURA_API_KEY" }}
+      - endpoint: {{ getenv "INFURA_API_KEY" }}
+      {{ end }}
+      {{ if getenv "THIRDWEB_API_KEY" }}
+      - endpoint: thirdweb://{{ getenv "THIRDWEB_API_KEY" }}
+      {{ end }}
       - endpoint: envio://rpc.hypersync.xyz
+  - id: test
+    upstreams:
+      - id: dioneprotocol
+        type: evm
+        endpoint: https://testnode.dioneprotocol.com/ext/bc/D/rpc
+        jsonRpc:
+          supportsBatch: true
+          batchMaxSize: 10
+          batchMaxWait: 100ms
+        evm:
+          chainId: 131313
+        failsafe:
+          timeout:
+            duration: 15s
+      - id: amoy
+        type: evm
+        endpoint: https://rpc-amoy.polygon.technology/
+        jsonRpc:
+          supportsBatch: true
+          batchMaxSize: 10
+          batchMaxWait: 100ms
+        evm:
+          chainId: 80002
+        failsafe:
+          timeout:
+            duration: 15s
