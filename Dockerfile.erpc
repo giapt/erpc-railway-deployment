@@ -1,6 +1,12 @@
 # Build stage
 FROM alpine:latest as builder
 
+ARG ALCHEMY_API_KEY
+ARG BLASTAPI_API_KEY
+ARG INFURA_API_KEY
+ARG THIRDWEB_API_KEY
+ARG DRPC_API_KEY
+
 # Install gomplate for advanced templating
 RUN apk add --no-cache curl && \
     curl -L https://github.com/hairyhenderson/gomplate/releases/download/v3.11.3/gomplate_linux-amd64 -o /usr/local/bin/gomplate && \
@@ -14,11 +20,11 @@ RUN gomplate -f /root/erpc.yaml.template -o /root/erpc.yaml
 FROM ghcr.io/erpc/erpc:latest
 
 # Set environment variables (these can be empty or set by your CI/CD environment)
-ENV ALCHEMY_API_KEY="" \
-    BLASTAPI_API_KEY="" \
-    INFURA_API_KEY="" \
-    THIRDWEB_API_KEY="" \
-    DRPC_API_KEY=""
+# ENV ALCHEMY_API_KEY="" \
+#     BLASTAPI_API_KEY="" \
+#     INFURA_API_KEY="" \
+#     THIRDWEB_API_KEY="" \
+#     DRPC_API_KEY=""
 
 # Copy processed config from builder
 COPY --from=builder /root/erpc.yaml /root/erpc.yaml

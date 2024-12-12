@@ -29,12 +29,11 @@ projects:
       - endpoint: drpc://{{ getenv "DRPC_API_KEY" }}
       {{ end }}
       {{ if getenv "INFURA_API_KEY" }}
-      - endpoint: {{ getenv "INFURA_API_KEY" }}
+      - endpoint: infura://{{ getenv "INFURA_API_KEY" }}
       {{ end }}
       {{ if getenv "THIRDWEB_API_KEY" }}
       - endpoint: thirdweb://{{ getenv "THIRDWEB_API_KEY" }}
       {{ end }}
-      - endpoint: envio://rpc.hypersync.xyz
   - id: test
     upstreams:
       - id: dioneprotocol
